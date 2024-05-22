@@ -1,0 +1,42 @@
+<app-header></app-header>
+<div class="row justify-content-center">
+    <div class="col-8 text-center">
+        <div class="mb-2">
+            <img src="assets/Angular.png" class="img-fluid profile-image">
+        </div>
+
+        <!-- Interpolation -->
+        <h1>{{ title }}</h1>
+        <p>Welcome, {{ name }}!</p>
+        
+        <!-- Property Binding -->
+        <button class="btn btn-primary mb-2 mx-2" [disabled]="isDisabled">Click Me!</button>
+        
+        <!-- Event Binding -->
+        <button class="btn btn-primary mb-2" (click)="onClick()">Toggle Disabled</button>
+        <p class="mt-2">Button is {{ isDisabled ? 'Disabled' : 'Enabled' }}</p>
+        
+
+        <div class="row justify-content-center mt-2">
+            <div class="col-5">
+
+                <!-- Two-way Binding -->
+                <input class="form-control" [(ngModel)]="inputText" placeholder="Enter text here">
+                <p class="mt-2">You entered: {{ inputText }}</p>
+            
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-2">
+            <div class="col-1">
+                
+                <!-- Directives -->
+                <div class="admin-controls" *ngIf="hasAdminPrivileges">
+                    <ul>
+                        <li *ngFor="let task of taskList">{{ task }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
