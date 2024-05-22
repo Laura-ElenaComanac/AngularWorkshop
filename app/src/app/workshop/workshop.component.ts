@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { TasksService } from '../services/tasks.service';
 
 @Component({
   selector: 'app-workshop',
@@ -6,6 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./workshop.component.css']
 })
 export class WorkshopComponent {
+
+  constructor(private taskService: TasksService){
+    this.taskList = taskService.getTasks()
+  }
+
     title: string = 'Angular Basics Workshop';
     name: string = 'Angular Enthusiast';
 
@@ -13,7 +19,7 @@ export class WorkshopComponent {
     inputText: string = '';
 
     hasAdminPrivileges: boolean = false;
-    taskList = ["Task1", "Task2", "Task3"]
+    taskList: string[]
 
     onClick() {
       this.isDisabled = !this.isDisabled;
