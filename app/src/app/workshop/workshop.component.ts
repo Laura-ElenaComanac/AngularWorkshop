@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { TasksService } from '../services/tasks.service';
 
 @Component({
@@ -6,17 +6,21 @@ import { TasksService } from '../services/tasks.service';
   templateUrl: './workshop.component.html',
   styleUrls: ['./workshop.component.css']
 })
-export class WorkshopComponent {
+export class WorkshopComponent implements OnInit {
 
-  constructor(private taskService: TasksService){
-    this.taskList = taskService.getTasks()
-  }
+    constructor(private taskService: TasksService){
+      this.taskList = taskService.getTasks()
+    }
+    
+    ngOnInit(): void {
+      console.log("Hello!")
+    }
 
     title: string = 'Angular Basics Workshop';
     name: string = 'Angular Enthusiast';
 
     isDisabled: boolean = false;
-    inputText: string = '';
+    inputText: string = ''; // Hello
 
     hasAdminPrivileges: boolean = false;
     taskList: string[]
